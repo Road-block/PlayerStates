@@ -1,0 +1,7 @@
+## Interface: 11200
+## Author: Roadblock
+## Title: Player States
+## Notes: PlayerState.state for use in macros and other addons. PlayerState.Channeling for now.
+## Version: 1.0a
+
+PlayerStates.lua
