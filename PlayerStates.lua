@@ -44,5 +44,18 @@ f.OnEvent = function(event,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,ar
 end
 f:SetScript("OnEvent",function() f.OnEvent(event,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11) end)
 
+setmetatable(states,
+  {
+    __index = function(t,key)
+                if key=="Spelltargeting" then -- dynamic lookup
+                  return SpellIsTargeting() and true or false
+                end
+              end,
+    __newindex =  function(t,key,val) -- prevent anyone from creating Spelltargeting key
+                    if key~="Spelltargeting" then
+                      rawset(t,key,val)
+                    end
+                  end
+  })
 
 _G["PlayerState"] = states
